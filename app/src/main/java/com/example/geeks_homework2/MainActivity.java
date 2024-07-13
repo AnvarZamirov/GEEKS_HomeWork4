@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -21,12 +20,14 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextEmail, editTextPassword;
     private Button buttonLogin;
     private TextView textViewTitle, textViewWelcome, textViewSubtitle;
+    private View rootView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        rootView = findViewById(R.id.main); // Получаем корневой элемент ConstraintLayout
 
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
@@ -35,14 +36,12 @@ public class MainActivity extends AppCompatActivity {
         textViewWelcome = findViewById(R.id.textViewWelcome);
         textViewSubtitle = findViewById(R.id.textViewSubtitle);
 
-        // Adjust the layout for system insets (like the navigation bar)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(rootView, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Watch for changes in EditText fields to change button background
         TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -59,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         editTextEmail.addTextChangedListener(textWatcher);
         editTextPassword.addTextChangedListener(textWatcher);
 
-        // Button click listener to check login credentials
         buttonLogin.setOnClickListener(v -> {
             String email = editTextEmail.getText().toString().trim();
             String password = editTextPassword.getText().toString().trim();
@@ -73,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Method to update button background based on EditText fields content
     private void updateButtonBackground() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
@@ -84,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Method to show welcome message and hide other views
     private void showWelcomeMessage() {
         textViewTitle.setVisibility(View.GONE);
         editTextEmail.setVisibility(View.GONE);
@@ -99,5 +95,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         editTextEmail.clearFocus();
         editTextPassword.clearFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(rootView.getWindowToken(), 0);
     }
 }
