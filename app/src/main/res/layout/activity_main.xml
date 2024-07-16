@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/background"
         tools:context=".MainActivity">
-
 
         <TextView
             android:id="@+id/textViewTitle"
@@ -24,11 +23,9 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.053" />
-
+            app:layout_constraintVertical_bias="0.036" />
 
         <TextView
             android:id="@+id/textViewWelcome"
@@ -37,45 +34,41 @@
             android:text="Добро пожаловать"
             android:textColor="@color/white"
             android:textSize="30sp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.396"
-            android:visibility="gone" />
-
+            app:layout_constraintVertical_bias="0.5" />
 
         <TextView
             android:id="@+id/textViewSubtitle"
-            android:layout_width="420dp"
-            android:layout_height="796dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Выполните вход или зарегистрируйтесь"
             android:textColor="#D9FFFFFF"
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
+            app:layout_constraintVertical_bias="0.3" />
 
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="370dp"
             android:layout_height="55dp"
-            android:paddingStart="25dp"
-            android:hint="Введите вашу почту"
             android:background="@drawable/edit_text_background"
+            android:hint="Введите вашу почту"
+            android:paddingStart="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.487"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.61" />
-
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/editTextPassword"
@@ -86,11 +79,10 @@
             android:paddingStart="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.721" />
-
+            app:layout_constraintVertical_bias="0.652" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonLogin"
@@ -98,14 +90,13 @@
             android:layout_height="55dp"
             android:background="@color/grey"
             android:text="Войти"
-            android:textSize="25dp"
+            android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.831" />
-
+            app:layout_constraintVertical_bias="0.8" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

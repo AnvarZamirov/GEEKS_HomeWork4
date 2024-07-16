@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             if (email.equals("admin") && password.equals("admin")) {
                 Toast.makeText(MainActivity.this, "Вы успешно зарегистрировались", Toast.LENGTH_SHORT).show();
                 showWelcomeMessage();
-            } else {
+            } else  {
                 Toast.makeText(MainActivity.this, "Неправильный логин и пароль", Toast.LENGTH_SHORT).show();
             }
         });
